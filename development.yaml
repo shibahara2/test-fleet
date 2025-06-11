@@ -8,6 +8,6 @@ metadata:
 spec:
   containers:
     - name: nginx
-      image: python-3.11-slim
+      image: python:3.11-slim
       ports:
         - containerPort: 80
