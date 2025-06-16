@@ -1,19 +1,26 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-    name: disk-cleaner-daemonset
+    name: image-pruner-daemonset
 spec:
     selector:
         matchLabels:
-            app: disk-cleaner
+            app: image-pruner
     template:
         metadata:
             labels:
-                app: disk-cleaner
+                app: image-pruner
         spec:
             containers:
                 - name: ubuntu-container
                   image: ubuntu:latest
-                  command: ["sleep", "3600"]
+                  command: ["/bin/bash", "-c"]
+                  args:
+                      - |
+                      while true; do
+                          echo "Running image-pruning script..."
+                          /prune.sh
+                          sleep 600
+                      done
                   ports:
                       - containerPort: 80
