@@ -14,5 +14,6 @@ spec:
             containers:
                 - name: ubuntu-container
                   image: ubuntu:latest
+                  command: ["sleep", "3600"]
                   ports:
                       - containerPort: 80
