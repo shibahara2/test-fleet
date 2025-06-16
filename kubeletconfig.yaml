@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
     name: kubelet-config
 data:
-    config.yaml:
+    config.yaml: |
         kind: KubeletConfiguration
         apiVersion: Kubelet.config.k8s.io/v1beta1
