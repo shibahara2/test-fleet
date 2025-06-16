@@ -12,17 +12,17 @@ spec:
                 app: image-pruner
         spec:
             containers:
-                name: ubuntu-container
-                image: ubuntu:latest
-                command: ["/bin/bash", "-c"]
-                args:
+                - name: ubuntu-container
+                  image: ubuntu:latest
+                  command: ["/bin/bash", "-c"]
+                  args:
                     - |
                       while true; do
                           echo "Running image-pruning script..."
                           /scripts/prune.sh
                           sleep 600
                       done
-                volumeMounts:
+                  volumeMounts:
                     - name: script-volume
                       mountPath: /scripts
             volumes:
