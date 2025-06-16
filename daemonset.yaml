@@ -16,12 +16,12 @@ spec:
                 image: ubuntu:latest
                 command: ["/bin/bash", "-c"]
                 args:
-                    -   |
-                        while true; do
-                            echo "Running image-pruning script..."
-                            /scripts/prune.sh
-                            sleep 600
-                        done
+                    - |
+                      while true; do
+                          echo "Running image-pruning script..."
+                          /scripts/prune.sh
+                          sleep 600
+                      done
                 volumeMounts:
                     - name: script-volume
                       mountPath: /scripts
