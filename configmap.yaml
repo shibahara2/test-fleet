@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: prune-script
+data:
+    prune.sh:
+        - |
+          echo "Pruning images..."
+          sleep 3600
