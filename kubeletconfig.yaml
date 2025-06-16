@@ -5,4 +5,4 @@ metadata:
 data:
     config.yaml: |
         kind: KubeletConfiguration
-        apiVersion: Kubelet.config.k8s.io/v1beta1
+        apiVersion: kubelet.config.k8s.io/v1beta1
