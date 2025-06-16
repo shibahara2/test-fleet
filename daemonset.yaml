@@ -19,13 +19,6 @@ spec:
                     - |
                       while true; do
                           echo "Running image-pruning script..."
-                          /scripts/prune.sh
+                          crictl rmi --prune
                           sleep 600
                       done
-                  volumeMounts:
-                    - name: script-volume
-                      mountPath: /scripts
-            volumes:
-                - name: script-volume
-                  configMap:
-                    name: prune-script
