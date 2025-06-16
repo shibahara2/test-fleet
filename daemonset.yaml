@@ -1,13 +1,18 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: disk-cleaner-daemonset
-  labels:
-    app: disk-cleaner
-    version: v1.0
+    name: disk-cleaner-daemonset
 spec:
-  containers:
-    - name: ubuntu-container
-      image: ubuntu:latest
-      ports:
-        - containerPort: 80
+    selector:
+        matchLabels:
+            app: disk-cleaner
+    template:
+        metadata:
+            labels:
+                app: disk-cleaner
+        spec:
+            containers:
+                name: ubuntu-container
+                image: ubuntu:latest
+                ports:
+                    containerPort: 80
