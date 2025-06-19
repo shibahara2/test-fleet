@@ -31,7 +31,7 @@ spec:
             volumes:
             -   name: host-crictl
                 hostPath:
-                    path: /usr/local/bin/crictl
+                    path: /usr/local/bin/k3s
                     type: File
             -   name: host-run
                 hostPath:
