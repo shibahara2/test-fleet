@@ -12,27 +12,30 @@ spec:
                 app: image-pruner
         spec:
             containers:
-            - name: ubuntu-container
-              image: rancher/crictl:v1.19.0
-              command: ["/bin/bash", "-c"]
-              args:
-                  - |
+            -   name: ubuntu-container
+                image: ubuntu:latest
+                command: ["/bin/bash", "-c"]
+                args:
+                -   |
                     while true; do
-                        echo "Running image-pruning script..."
-                        crictl --runtime-endpoint unix:///run/k3s/containerd/containerd.sock rmi --prune
                         sleep 600
                     done
-              securityContext:
-              privileged: true
-              runAsUser: 0
-              volumeMounts:
-              - name: containerd-socket
-                mountPath: /run/k3s
+                securityContext:
+                    privileged: true
+                volumeMounts:
+                -   name: host-crictl
+                    mountPath: /crictl
+                -   name: host-run
+                    mountPath: /run
             volumes:
-            - name: containerd-socket
-              hostPath:
-                  path: /run/k3s
-                  type: Directory
+            -   name: host-crictl
+                hostPath:
+                    path: /usr/local/bin/crictl
+                    type: File
+            -   name: host-crictl
+                hostPath:
+                    path: /run
+                    type: Directory
               
                   
  
