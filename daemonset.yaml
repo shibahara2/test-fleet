@@ -32,7 +32,7 @@ spec:
                 hostPath:
                     path: /usr/local/bin/crictl
                     type: File
-            -   name: host-crictl
+            -   name: host-run
                 hostPath:
                     path: /run
                     type: Directory
