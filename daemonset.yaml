@@ -17,6 +17,7 @@ spec:
                 command: ["/bin/bash", "-c"]
                 args:
                 -   |
+                    ln -s /k3s /crictl
                     while true; do
                         sleep 600
                     done
@@ -24,12 +25,12 @@ spec:
                     privileged: true
                     runAsUser: 0
                 volumeMounts:
-                -   name: host-crictl
-                    mountPath: /crictl
+                -   name: host-k3s
+                    mountPath: /k3s
                 -   name: host-run
                     mountPath: /run
             volumes:
-            -   name: host-crictl
+            -   name: host-k3s
                 hostPath:
                     path: /usr/local/bin/k3s
                     type: File
