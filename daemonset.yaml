@@ -25,11 +25,17 @@ spec:
                     privileged: true
                     runAsUser: 0
                 volumeMounts:
+                -   name: socket
+                    mountPath: /run/k3s/containerd
                 -   name: host-k3s
                     mountPath: /k3s
                 -   name: host-run
                     mountPath: /run
             volumes:
+            -   name: socket
+                hostPath:
+                    path: /run/k3s/containerd
+                    type: Directory
             -   name: host-k3s
                 hostPath:
                     path: /usr/local/bin/k3s
