@@ -23,6 +23,8 @@ spec:
                     mountPath: /run/k3s/containerd
                 -   name: host-k3s
                     mountPath: /k3s
+                -   name: script
+                    mountPath: /
             volumes:
             -   name: socket
                 hostPath:
@@ -32,4 +34,7 @@ spec:
                 hostPath:
                     path: /usr/local/bin/k3s
                     type: File
+            -   name: script
+                configMap:
+                    name: script-config
 
