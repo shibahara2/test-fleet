@@ -29,8 +29,6 @@ spec:
                     mountPath: /run/k3s/containerd
                 -   name: host-k3s
                     mountPath: /k3s
-                -   name: host-run
-                    mountPath: /run
             volumes:
             -   name: socket
                 hostPath:
@@ -40,10 +38,4 @@ spec:
                 hostPath:
                     path: /usr/local/bin/k3s
                     type: File
-            -   name: host-run
-                hostPath:
-                    path: /run
-                    type: Directory
-              
-                  
- 
+
