@@ -5,4 +5,4 @@ metadata:
 data:
     test.sh: |
              #!/bin/sh
-             echo "Hello from shell script!"
+             echo "Hello from shell script!!!"
