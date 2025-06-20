@@ -14,13 +14,7 @@ spec:
             containers:
             -   name: ubuntu-container
                 image: ubuntu:latest
-                command: ["/bin/bash", "-c"]
-                args:
-                -   |
-                    ln -s /k3s /crictl
-                    while true; do
-                        sleep 600
-                    done
+                command: ["/bin/bash", "-c", "test.sh"]
                 securityContext:
                     privileged: true
                     runAsUser: 0
