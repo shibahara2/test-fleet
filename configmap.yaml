@@ -7,7 +7,7 @@ data:
         ln -s /k3s /crictl
         echo "runtime-endpoint: unix:///run/k3s/containerd/containerd.sock" > crictl.yaml
         while true; do
-            ./crictl rmi --prune
+            ./crictl --config crictl.yaml rmi --prune
             ./crictl --config crictl.yaml images
             sleep 600
         done
