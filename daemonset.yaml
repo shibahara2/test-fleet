@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-    name: image-pruner-daemonset
+    name: image-pruner-daemonset2
 spec:
     selector:
         matchLabels:
