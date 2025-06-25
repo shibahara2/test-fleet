@@ -10,6 +10,8 @@ spec:
         metadata:
             labels:
                 app: image-pruner
+            annotations:
+                configmap-hash: "{{ .Values.configmap | sha256sum }}"
         spec:
             containers:
             -   name: ubuntu-container
