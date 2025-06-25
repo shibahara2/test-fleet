@@ -14,7 +14,7 @@ spec:
             containers:
             -   name: ubuntu-container
                 image: ubuntu:latest
-                command: ["/bin/bash", "-c", "test.sh"]
+                command: ["/bin/bash", "-c", "/script/test.sh"]
                 securityContext:
                     privileged: true
                     runAsUser: 0
@@ -24,7 +24,7 @@ spec:
                 -   name: host-k3s
                     mountPath: /k3s
                 -   name: script
-                    mountPath: /
+                    mountPath: /script/
             volumes:
             -   name: socket
                 hostPath:
