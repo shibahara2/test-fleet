@@ -14,7 +14,7 @@ spec:
             containers:
             -   name: ubuntu-container
                 image: ubuntu:latest
-                command: ["/bin/bash", "-c", "/script/test.sh"]
+                command: ["/bin/bash", "-c", "bash /script/test.sh"]
                 securityContext:
                     privileged: true
                     runAsUser: 0
