@@ -4,8 +4,8 @@ metadata:
     name: script-config
 data:
     test.sh: |
-             #!/bin/sh
-             echo "Hello from shell script!!!"
-             while true; do
-                sleep 60
-             done
+        echo "runtime-endpoint: unix:///run/k3s/containerd/containerd.sock" > crictl.yaml
+        while true; do
+            ./crictl --config crictl.yaml images
+            sleep 600
+        done
