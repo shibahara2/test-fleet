@@ -9,5 +9,5 @@ data:
         while true; do
             ./crictl --config crictl.yaml rmi --prune
             ./crictl --config crictl.yaml images
-            sleep 540
+            sleep 600
         done
