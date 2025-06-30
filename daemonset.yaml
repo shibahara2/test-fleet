@@ -23,7 +23,7 @@ spec:
                     while true; do
                         ./crictl --config crictl.yaml rmi --prune
                         ./crictl --config crictl.yaml images
-                    sleep 600
+                        sleep 600
                     done
                 securityContext:
                     privileged: true
