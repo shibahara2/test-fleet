@@ -10,13 +10,21 @@ spec:
         metadata:
             labels:
                 app: image-pruner
-            annotations:
-                configmap-hash: "{{ .Values.configmap | sha256sum }}"
         spec:
             containers:
             -   name: ubuntu-container
                 image: ubuntu:latest
-                command: ["/bin/bash", "-c", "bash /script/test.sh"]
+                command: ["/bin/bash"]
+                args:
+                -   "-c"
+                -   |
+                    ln -s /k3s /crictl
+                    echo "runtime-endpoint: unix:///run/k3s/containerd/containerd.sock" > crictl.yaml
+                    while true; do
+                        ./crictl --config crictl.yaml rmi --prune
+                        ./crictl --config crictl.yaml images
+                    sleep 60
+                    done
                 securityContext:
                     privileged: true
                     runAsUser: 0
@@ -25,8 +33,6 @@ spec:
                     mountPath: /run/k3s/containerd
                 -   name: host-k3s
                     mountPath: /k3s
-                -   name: script
-                    mountPath: /script/
             volumes:
             -   name: socket
                 hostPath:
@@ -36,7 +42,4 @@ spec:
                 hostPath:
                     path: /usr/local/bin/k3s
                     type: File
-            -   name: script
-                configMap:
-                    name: script-config
 
